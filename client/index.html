@@ -8,6 +8,7 @@
     <script src="bower_components/backbone/backbone.js"></script>
 
     <script src="data/data.js"></script>
+    <script src="env/config.js"></script>
 
     <script src="models/SongModel.js"></script>
     <script src="collections/Songs.js"></script>
@@ -22,11 +23,17 @@
     <script>
       $(function() {
         // set up model objects
-        var library = new Songs(songData);
+        var library = new Songs();
         var app = new AppModel({library: library});
+        library.getSongData();
+
+
+        // setTimeout(library.add.bind(library, allSongs), 3000);
+        // setTimeout(console.log.bind(this, library), 6000);
 
         // build a view for the top level of the whole app
         var appView = new AppView({model: app});
+
         // app.get('library').at(1).enqueue();
 
         // put the view onto the screen
