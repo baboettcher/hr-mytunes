@@ -23,9 +23,9 @@
     <script>
       $(function() {
         // set up model objects
-        var library = new Songs();
+        var library = new Songs(songData);
         var app = new AppModel({library: library});
-        library.getSongData();
+        // library.getSongData();
 
 
         // setTimeout(library.add.bind(library, allSongs), 3000);

@@ -17,34 +17,40 @@ var AppModel = Backbone.Model.extend({
       this.set('currentSong', song);
     }, this);
 
-    // listener for enqueue event in songModel
+    //listener for enqueue event in songModel
     params.library.on('enqueue', function(song) {
       this.get('songQueue').add(song);
     }, this);
 
+    params.library.on('dequeue', function(song) {
+      console.log('song ended, calling playNext');
+      this.get('songQueue').playNext();
+    }, this);
 
-    $.ajax({
-    url: 'http://parse.sfm8.hackreactor.com/mytunes/classes/songs',
-    type: 'GET',
-    contentType: 'json',
-    dataType: 'json',
-    success: function (data) {
-      console.log('song data retrieved', data);
-      data.results.forEach(function (entry){
-        params.library.add(entry);
-      });
-      params.library.trigger('fetch');
 
-      // songLibrary.trigger('change');
 
-      //this.add(data.results);
+    // $.ajax({
+    // url: 'http://parse.sfm8.hackreactor.com/mytunes/classes/songs',
+    // type: 'GET',
+    // contentType: 'json',
+    // dataType: 'json',
+    // success: function (data) {
+    //   console.log('song data retrieved', data);
+    //   data.results.forEach(function (entry){
+    //     params.library.add(entry);
+    //   });
+    //   params.library.trigger('fetch');
 
-    },
-    error: function (data) {
-      console.error('myTunes song data not retrieved', data);
-    }
+    //   // songLibrary.trigger('change');
 
-    });
+    //   //this.add(data.results);
+
+    // },
+    // error: function (data) {
+    //   console.error('myTunes song data not retrieved', data);
+    // }
+
+    // });
 
     // params.library.on('change', function(song) {
     //   // this.get('songQueue').add(song);
