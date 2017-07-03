@@ -11,7 +11,8 @@ var SongModel = Backbone.Model.extend({
     this.trigger('enqueue', this);
   },
 
-  dequeue : function(){
+  dequeue: function() {
+    console.log('songModel.dequeue() invoked');
     this.trigger('dequeue', this);
   }
 

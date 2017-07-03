@@ -6,17 +6,16 @@ var SongQueue = Backbone.Collection.extend({
   initialize: function() {
   },
 
-  playFirst : function(){
+  playFirst: function() {
     // trigger play event on first index
     this.at(0).play();
 
   },
 
-  playNext : function(){
-    console.log('playing next song');
+  playNext: function() {
+    // console.log('playing next song');
     this.remove(this.at(0));
     this.playFirst();
-
   }
 
 });
