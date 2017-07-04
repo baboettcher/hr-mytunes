@@ -7,9 +7,9 @@ var LibraryView = Backbone.View.extend({
     // setInterval(this.render.bind(this), 200);
     this.render();
     // console.log(this.collection);
-    // this.collection.on('add', function() {
-    //   this.render();
-    // }, this);
+    this.collection.on('fetch', function() {
+      this.render();
+    }, this);
 
   // this.collection.on('fetch', function() {
   //   this.render();

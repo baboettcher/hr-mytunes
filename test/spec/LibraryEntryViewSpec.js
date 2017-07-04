@@ -15,6 +15,7 @@ describe('LibraryEntryView', function() {
   // Comment it out when implementing the song queue.
   it ('plays clicked songs', function() {
     sinon.spy(SongModel.prototype, 'play');
+    console.log('testing to see if it plays clicked songs');
 
     view.$el.children().first().click();
     expect(model.play).to.have.been.called;
